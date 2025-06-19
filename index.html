@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        
+        <title>Modern Tab Panel with Radio Buttons</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="toggle-wrapper">
+                <input type="radio" name="toggle" id="tab1" checked>
+                <input type="radio" name="toggle" id="tab2">
+                <input type="radio" name="toggle" id="tab3">
+                
+                <div class="toggle-labels">
+                    <label for="tab1"><span>Design</span></label>
+                    <label for="tab2"><span>Development</span></label>
+                    <label for="tab3"><span>Analytics</span></label>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="content" data-tab="tab1">
+                        <div class="content-inner">
+                            <h2>Creative Design</h2>
+                            <p>Bring your projects to life with modern and impressive designs. We offer aesthetic and functional solutions that prioritize user experience. Our team of expert designers creates stunning visuals that capture attention and drive engagement.</p>
+                            <div class="image-container">
+                                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97" alt="Design">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content" data-tab="tab2">
+                        <div class="content-inner">
+                            <h2>Web Development</h2>
+                            <p>Develop your web projects with the latest technologies. We work with responsive design, performance optimization, and modern web standards. From simple websites to complex web applications, we deliver solutions that exceed expectations.</p>
+                            <div class="image-container">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Development">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content" data-tab="tab3">
+                        <div class="content-inner">
+                            <h2>Data Analytics</h2>
+                            <p>Analyze your data and gain valuable insights. We provide big data analysis, reporting, and visualization solutions. Transform your raw data into actionable intelligence with our advanced analytics tools and expertise.</p>
+                            <div class="image-container">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Analytics">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Created by <a href="https://harmoncode.com" target="_blank" rel="noopener noreferrer">HarmonCode</a></p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>

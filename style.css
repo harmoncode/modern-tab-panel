@@ -1,0 +1,292 @@
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --text-dark: #1f2937;
+    --text-light: #4b5563;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--text-dark);
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 40px;
+}
+
+.toggle-wrapper {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.toggle-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg), 0 15px 40px rgba(99, 102, 241, 0.2);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.toggle-labels {
+    display: flex;
+    background: var(--bg-light);
+    padding: 20px;
+    gap: 10px;
+    position: relative;
+}
+
+.toggle-labels::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    opacity: 0.1;
+}
+
+.toggle-labels label {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    background: var(--white);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    color: var(--text-light);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-labels label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.toggle-labels label span {
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.toggle-labels label:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.toggle-labels label:hover::before {
+    opacity: 0.1;
+}
+
+.toggle-labels label:hover span {
+    color: var(--text-dark);
+}
+
+input[type="radio"]:checked + input[type="radio"] + input[type="radio"] + .toggle-labels label[for="tab1"],
+input[type="radio"]:checked + input[type="radio"] + .toggle-labels label[for="tab2"],
+input[type="radio"]:checked + .toggle-labels label[for="tab3"] {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+input[type="radio"]:checked + input[type="radio"] + input[type="radio"] + .toggle-labels label[for="tab1"] span,
+input[type="radio"]:checked + input[type="radio"] + .toggle-labels label[for="tab2"] span,
+input[type="radio"]:checked + .toggle-labels label[for="tab3"] span {
+    color: var(--white);
+}
+
+input[type="radio"]:checked + input[type="radio"] + input[type="radio"] + .toggle-labels label[for="tab1"]::before,
+input[type="radio"]:checked + input[type="radio"] + .toggle-labels label[for="tab2"]::before,
+input[type="radio"]:checked + .toggle-labels label[for="tab3"]::before {
+    opacity: 1;
+}
+
+.content-wrapper {
+    position: relative;
+    height: 500px;
+    background: var(--white);
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    padding: 40px;
+}
+
+.content-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+}
+
+.content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 3px;
+}
+
+.content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+input[type="radio"]:checked + input[type="radio"] + input[type="radio"] + .toggle-labels + .content-wrapper .content[data-tab="tab1"],
+input[type="radio"]:checked + input[type="radio"] + .toggle-labels + .content-wrapper .content[data-tab="tab2"],
+input[type="radio"]:checked + .toggle-labels + .content-wrapper .content[data-tab="tab3"] {
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+.footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transition: var(--transition);
+    transform-origin: right;
+}
+
+.footer a:hover {
+    color: var(--primary-dark);
+}
+
+.footer a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@media (max-width: 768px) {
+    .toggle-labels {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .content h2 {
+        font-size: 2rem;
+    }
+
+    .content-wrapper {
+        height: 400px;
+    }
+
+    .footer {
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+}
